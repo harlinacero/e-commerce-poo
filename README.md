@@ -1,6 +1,5 @@
 
-- **.vscode/**: Contiene configuraciones específicas del entorno de desarrollo Visual Studio Code.
-  - `launch.json`: Configuración para depuración.
+
 - **domain/**: Contiene los archivos de dominio del proyecto.
   - `product.go`: Define la estructura y métodos relacionados con los productos.
   - `shoppingCar.go`: Define la estructura y métodos relacionados con el carrito de compras.
@@ -40,3 +39,5 @@ Al ejecutar la aplicación, se te pedirá que introduzcas la información del pr
 6. Cantidad de stock
 
 La aplicación calculará y mostrará los valores correspondientes al impuesto, descuento y valor real del producto.
+![image](https://github.com/user-attachments/assets/b29bdb03-002b-4b4c-92da-69253e3ecd37)
+
