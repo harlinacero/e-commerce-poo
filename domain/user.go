@@ -1,49 +1,51 @@
 package domain
 
+import "github.com/google/uuid"
+
 type User struct {
-	ID       string
-	Username string
-	Email    string
-	Password string
-	Address  string
+	id       string
+	username string
+	email    string
+	password string
+	address  string
 }
 
-func NewUser(id string, username string, email string,
+func NewUser(username string, email string,
 	password string, address string) *User {
 	return &User{
-		ID:       id,
-		Username: username,
-		Email:    email,
-		Password: password,
-		Address:  address,
+		id:       uuid.New().String(),
+		username: username,
+		email:    email,
+		password: password,
+		address:  address,
 	}
 }
 
 func (u *User) SetUsername(username string) {
-	u.Username = username
+	u.username = username
 }
 
 func (u *User) SetEmail(email string) {
-	u.Email = email
+	u.email = email
 }
 
 func (u *User) SetPassword(password string) {
-	u.Password = password
+	u.password = password
 }
 
 func (u *User) SetAddress(address string) {
-	u.Address = address
+	u.address = address
 }
 
 func (u *User) GetUsername() string {
-	return u.Username
+	return u.username
 }
 func (u *User) GetEmail() string {
-	return u.Email
+	return u.email
 }
 func (u *User) GetPassword() string {
-	return u.Password
+	return u.password
 }
 func (u *User) GetAddress() string {
-	return u.Address
+	return u.address
 }

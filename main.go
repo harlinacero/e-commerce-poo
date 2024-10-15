@@ -38,18 +38,35 @@ func main() {
 			shoppingCar.AddProduct(*product)
 		}
 
-		fmt.Printf("%s Desea agregar otro producto? (s/n)", user.GetUsername())
+		fmt.Printf("%s Desea crear otro producto? (s/n)", user.GetUsername())
 		addProduct, _ = reader.ReadString('\n')
 		addProduct = strings.TrimSpace(addProduct)
 	}
 
 	showShoppingCar(shoppingCar)
+	order := createOrder(shoppingCar, user)
+	payOrder(order)
+
+	
+}
+
+func payOrder(order *domain.Order) {
+	pay := domain.NewPay("Tarjeta", order.GetTotal(), *order)
+	pay.ProcessPay()
+}
+
+func createOrder(shoppingCar domain.ShoppingCar, user *domain.User) *domain.Order{
+	order := domain.NewOrder(user, shoppingCar.GetProducts(), "Pendiente", shoppingCar.CalculateTotalValue())
+	fmt.Println("******************************************************************")
+	fmt.Println("Orden Creada para el usuario ", user.GetUsername())
+	fmt.Println("******************************************************************")
+	return order.GetOrder()
 }
 
 func showShoppingCar(shoppingCar domain.ShoppingCar) {
 	fmt.Println("******************************************************************")
 	fmt.Println("Usted ha agregado los siguientes productos a su carrito de compras")
-	for i, product := range shoppingCar.Productcs {
+	for i, product := range shoppingCar.GetProducts() {
 		fmt.Println("************ Producto ", i+1, " ************")
 		fmt.Println("Nombre: ", product.GetName())
 		fmt.Println("Descripción: ", product.GetDescription())
@@ -88,7 +105,7 @@ func addUser() (*domain.User, error) {
 	fmt.Println("Dirección: ")
 	fmt.Scanln(&address)
 
-	user = domain.NewUser(name, name, email, password, address)
+	user = domain.NewUser(name, email, password, address)
 	username := user.GetUsername()
 	fmt.Printf("El usuario %s ha sido creado", username)
 	fmt.Println("")
