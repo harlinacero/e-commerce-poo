@@ -3,13 +3,14 @@ package domain
 import "github.com/google/uuid"
 
 type User struct {
-	id       string
-	username string
-	email    string
-	password string
-	address  string
+	id       string // ID
+	username string // Username
+	email    string // Email
+	password string // Password
+	address  string 
 }
 
+// Constructor
 func NewUser(username string, email string,
 	password string, address string) *User {
 	return &User{
@@ -21,6 +22,7 @@ func NewUser(username string, email string,
 	}
 }
 
+// Setters
 func (u *User) SetUsername(username string) {
 	u.username = username
 }
@@ -37,6 +39,7 @@ func (u *User) SetAddress(address string) {
 	u.address = address
 }
 
+// Getters
 func (u *User) GetUsername() string {
 	return u.username
 }

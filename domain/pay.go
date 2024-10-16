@@ -8,12 +8,13 @@ import (
 )
 
 type Pay struct {
-	id     string
-	method string
-	value  float64
-	order  Order
+	id     string // ID
+	method string // Metodo de pago puede ser tarjeta, efectivo, etc
+	value  float64 // Valor del pago
+	order  Order // Pedido
 }
 
+// Constructor
 func NewPay(method string, value float64, order Order) *Pay {
 	return &Pay{
 		id:     uuid.New().String(),
@@ -23,12 +24,13 @@ func NewPay(method string, value float64, order Order) *Pay {
 	}
 }
 
+// Procesamiento del pago
 func (p *Pay) ProcessPay() {
 	fmt.Println("Procesando pago")
 
 	// Aquí se realizaría la lógica de pago
 	time.AfterFunc(2*time.Second, func() {
-		p.order.updateState("Pagado")
+		p.order.UpdateState("Pagado")
 		fmt.Println("Comprobando pago, por favor espere...")
 	})
 
