@@ -1,16 +1,20 @@
-package domain
+package review
 
-import "github.com/google/uuid"
+import (
+	"ecommerce.com/ecommerce/domain/product"
+	"ecommerce.com/ecommerce/domain/user"
+	"github.com/google/uuid"
+)
 
 type Review struct {
 	id      string
-	user    User
-	product Product
+	user    *user.UserBase
+	product *product.Product
 	comment string
 	rating  int
 }
 
-func NewReview(user User, product Product, comment string, rating int) *Review {
+func NewReview(user *user.UserBase, product *product.Product, comment string, rating int) *Review {
 	return &Review{
 		id:      uuid.New().String(),
 		user:    user,

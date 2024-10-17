@@ -1,9 +1,10 @@
-package domain
+package pay
 
 import (
 	"fmt"
 	"time"
 
+	"ecommerce.com/ecommerce/domain/order"
 	"github.com/google/uuid"
 )
 
@@ -11,11 +12,11 @@ type Pay struct {
 	id     string // ID
 	method string // Metodo de pago puede ser tarjeta, efectivo, etc
 	value  float64 // Valor del pago
-	order  Order // Pedido
+	order  *order.Order // Pedido
 }
 
 // Constructor
-func NewPay(method string, value float64, order Order) *Pay {
+func NewPay(method string, value float64, order *order.Order) *Pay {
 	return &Pay{
 		id:     uuid.New().String(),
 		method: method,

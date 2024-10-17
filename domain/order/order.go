@@ -1,22 +1,24 @@
-package domain
+package order
 
 import (
 	"time"
 
+	"ecommerce.com/ecommerce/domain/product"
+	"ecommerce.com/ecommerce/domain/user"
 	"github.com/google/uuid"
 )
 
 type Order struct {
 	id       string // ID
-	user     *User // Usuario
-	products []Product // Lista de Productos
+	user     *user.Customer // Usuario
+	products []product.Product // Lista de Productos
 	date     time.Time // Fecha
 	state    string // Estado del pedido
 	total    float64 // Valor total del pedido
 }
 
 // Constructor
-func NewOrder(user *User, products []Product, state string, total float64) *Order {
+func NewOrder(user *user.Customer, products []product.Product, state string, total float64) *Order {
 	return &Order{
 		id:       uuid.New().String(),
 		user:     user,

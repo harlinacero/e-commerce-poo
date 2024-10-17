@@ -1,6 +1,8 @@
-package domain
+package product
 
-type Product struct {
+
+
+type ProductBase struct {
 	code           string  // Codigo
 	name           string  // Nombre
 	description    string  // Descripcion
@@ -13,8 +15,8 @@ type Product struct {
 // Constructor
 func NewProduct(code string, name string, description string,
 	grossvalue float64, discPercentage float64, taxPercentage float64, stock int,
-) *Product {
-	return &Product{
+) *ProductBase {
+	return &ProductBase{
 		code:           code,
 		name:           name,
 		description:    description,
@@ -26,50 +28,57 @@ func NewProduct(code string, name string, description string,
 }
 
 // Setters
-func (p *Product) SetName(name string) {
+func (p *ProductBase) SetName(name string) {
 	p.name = name
 }
 
-func (p *Product) SetDescription(description string) {
+func (p *ProductBase) SetDescription(description string) {
 	p.description = description
 }
 
-func (p *Product) SetGrossValue(value float64) {
+func (p *ProductBase) SetGrossValue(value float64) {
 	p.grossValue = value
 }
 
-func (p *Product) SetDisccPercentage(discPercentage float64) {
+func (p *ProductBase) SetDisccountPercentage(discPercentage float64) {
 	p.discPercentage = discPercentage
 }
 
-func (p *Product) SetTaxPercentage(taxPercentage float64) {
+func (p *ProductBase) SetTaxPercentage(taxPercentage float64) {
 	p.taxPercentage = taxPercentage
 }
 
+func (p *ProductBase) SetStock(stock int) {
+	p.stock = stock
+}
 // Getters
-func (p *Product) GetName() string {
+func (p *ProductBase) GetName() string {
 	return p.name
 }
 
-func (p *Product) GetDescription() string {
+func (p *ProductBase) GetDescription() string {
 	return p.description
 }
 
-func (p *Product) GetGrossValue() float64 {
+func (p *ProductBase) GetGrossValue() float64 {
 	return p.grossValue
 }
 
 // Calcula el valor del descuento
-func (p *Product) GetDiscValue() float64 {
+func (p *ProductBase) GetDiscValue() float64 {
 	return (p.grossValue * p.discPercentage) / 100
 }
 
 // Calcula el valor del impuesto
-func (p *Product) GetTaxAddValue() float64 {
+func (p *ProductBase) GetTaxAddValue() float64 {
 	return (p.grossValue * p.taxPercentage) / 100
 }
 
-// Calcula el valor real del producto
-func (p *Product) GetRealValue() float64 {
+// Calcula el valor real del Producto
+func (p *ProductBase) GetRealValue() float64 {
 	return p.grossValue + p.GetTaxAddValue() - p.GetDiscValue()
+}
+
+func (p *ProductBase) GetStock() int {
+	return p.stock
 }
