@@ -6,8 +6,9 @@ type ShoppingCar struct {
 }
 
 // NewShoppingCar returns new ShoppoingCar.
-func NewShoppingCar(produts []Product) *ShoppingCar {
+func NewShoppingCar(user User, produts []Product) *ShoppingCar {
 	return &ShoppingCar{
+		user: user,
 		productcs: produts,
 	}
 }

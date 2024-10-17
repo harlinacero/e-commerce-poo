@@ -46,9 +46,7 @@ func (u *User) GetUsername() string {
 func (u *User) GetEmail() string {
 	return u.email
 }
-func (u *User) GetPassword() string {
-	return u.password
-}
+
 func (u *User) GetAddress() string {
 	return u.address
 }

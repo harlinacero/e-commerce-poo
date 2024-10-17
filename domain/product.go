@@ -38,11 +38,11 @@ func (p *Product) SetGrossValue(value float64) {
 	p.grossValue = value
 }
 
-func (p *Product) SetDiscValue(discPercentage float64) {
+func (p *Product) SetDisccPercentage(discPercentage float64) {
 	p.discPercentage = discPercentage
 }
 
-func (p *Product) SetTaxAddValue(taxPercentage float64) {
+func (p *Product) SetTaxPercentage(taxPercentage float64) {
 	p.taxPercentage = taxPercentage
 }
 
